@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DermAI — Skincare Knowledge Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="brand-wrap">
+      <img
+        src="{{ url_for('static', filename='images/dermAI_logo.png') }}"
+        alt="DermAI logo"
+        class="logo-mark"
+        >
+      <div>
+        <div class="brand">DermAI</div>
+        <div class="brand-sub">Skincare knowledge assistant</div>
+      </div>
+    </div>
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch theme">◐</button>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+  <div class="hero-banner">
+    <img
+      src="{{ url_for('static', filename='images/banner.jpg') }}"
+      alt="Soft skincare texture banner"
+      class="hero-banner-img"
+    >
+  </div>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Skincare guidance</p>
+    <h1>Find the right skincare products and natural ingredients for your skin.</h1>
+    <p class="lead">
+      DermAI combines product catalog, organic skincare, and NICE psoriasis guidance
+      into one searchable assistant built for skincare education.
+    </p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="openChatBtn">Ask dermAI</button>
+      <a class="btn btn-secondary" href="#education">Learn first</a>
+    </div>
+  </div>
+
+  <div class="hero-art card-grid">
+    <article class="info-card feature-card tall">
+      <span class="kicker">Product catalog</span>
+      <h3>1,000+ skincare products</h3>
+      <p>Search cleansers, moisturizers, serums, and sunscreens.</p>
+    </article>
+
+    <article class="info-card feature-card">
+      <span class="kicker">Organic knowledge</span>
+      <h3>Natural ingredient guidance</h3>
+      <p>Surface organic ingredients, benefits, usage notes, and skin-type relevance.</p>
+    </article>
+
+    <article class="info-card feature-card accent">
+      <span class="kicker">Clinical grounding</span>
+      <h3>NICE psoriasis guidance</h3>
+      <p>Clinical guideline about psoriasis assessment and management.</p>
+    </article>
+  </div>
+</section>
+
+    <section class="section" id="education">
+      <div class="section-heading">
+        <p class="eyebrow">Skincare basics</p>
+        <h2>What dermAI can help with</h2>
+      </div>
+      <div class="three-grid">
+        <article class="info-card">
+          <h3>Routine discovery</h3>
+          <p>Ask which product categories fit dry, oily, combination, or sensitive skin based on your skin type.</p>
+        </article>
+        <article class="info-card">
+          <h3>Ingredient understanding</h3>
+          <p>Compare natural ingredient benefits with catalog products to understand why an option may fit a concern.</p>
+        </article>
+        <article class="info-card">
+          <h3>Guideline-aware answers</h3>
+          <p>Use the assistant for educational questions about psoriasis and when specialist care may be needed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section split-section">
+      <div class="info-card prose-card">
+        <p class="eyebrow">Use responsibly</p>
+        <h2>Helpful for learning, not diagnosis</h2>
+        <p>DermAI is designed for educational retrieval over skincare data and one clinical guideline. It should support exploration, not replace a dermatologist or a personalized treatment plan.</p>
+      </div>
+      <div class="tips-stack">
+        <article class="info-card tip-card">
+          <h3>Ask by skin type</h3>
+          <p>Examples: “best cleanser for oily skin” or “organic ingredients for sensitive skin.”</p>
+        </article>
+        <article class="info-card tip-card">
+          <h3>Ask by concern</h3>
+          <p>Examples: “what may help with dryness” or “psoriasis topical treatment guidance.”</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-fab" id="chatFab" aria-label="Open dermAI chat">Ask dermAI</button>
+
+  <aside class="chat-panel" id="chatPanel" aria-hidden="true">
+    <div class="chat-header">
+      <div>
+        <strong>dermAI</strong>
+        <p>Products, ingredients, and psoriasis guidance</p>
+      </div>
+      <button class="icon-btn" id="closeChatBtn" aria-label="Close chat">×</button>
+    </div>
+
+    <div class="chat-controls">
+      <select id="skinTypeSelect" aria-label="Skin type filter">
+        <option value="">All skin types</option>
+        <option value="dry">Dry</option>
+        <option value="oily">Oily</option>
+        <option value="combination">Combination</option>
+        <option value="sensitive">Sensitive</option>
+        <option value="normal">Normal</option>
+      </select>
+      <select id="entityTypeSelect" aria-label="Source filter">
+        <option value="">Auto detect source</option>
+        <option value="product">Products</option>
+        <option value="ingredient">Organic ingredients</option>
+        <option value="guideline">Guideline</option>
+      </select>
+    </div>
+
+    <div class="chat-thread" id="chatThread">
+      <div class="message assistant-message">
+        Hi — I’m dermAI. Ask about skincare products, organic ingredients, or psoriasis guidance.
+      </div>
+    </div>
+
+    <form id="chatForm" class="chat-form">
+      <textarea id="questionInput" rows="3" placeholder="Ask a skincare question..."></textarea>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </aside>
+
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
