@@ -1,4 +1,4 @@
-# dermAI
+# DermAI
 
 A complete multi-source skincare RAG app with:
 - Kaggle skincare product dataset
